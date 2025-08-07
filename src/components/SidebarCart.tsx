@@ -4,6 +4,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import React from "react";
 import type { CraftItem } from "../data/types.ts";
+import {resourcesData} from "./resources/data.ts";
 
 interface SidebarCartProps {
     open: boolean;
@@ -54,7 +55,7 @@ const SidebarCart: React.FC<SidebarCartProps> = ({
                     <Typography variant="h6">Ресурсы:</Typography>
                     {Object.entries(resources).map(([res, qty]) => (
                         <Box key={res} sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                            <img src={`src/components/resources/${res}.png`} alt={res} width={24} height={24} style={{ marginRight: 8 }} />
+                            <img src={`${resourcesData[res]}`} alt={res} width={24} height={24} style={{ marginRight: 8 }} />
                             <Typography>{res}: {qty}</Typography>
                         </Box>
                     ))}

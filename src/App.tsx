@@ -3,10 +3,9 @@ import { Container, Typography, Grid, TextField, Button, MenuItem } from "@mui/m
 import ItemCard from "./components/ItemCard";
 import SidebarCart from "./components/SidebarCart";
 import { items } from "./data/items.ts";
-import { sendCraftRequest } from "./utils/EmailService";
 import type { CraftItem } from "./data/types.ts";
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
     const [filter, setFilter] = useState("");
     const [search, setSearch] = useState("");
     const [cart, setCart] = useState<Record<string, { item: CraftItem; quantity: number }>>({});
@@ -51,13 +50,6 @@ const App: React.FC = () => {
             });
         });
         return res;
-    };
-
-    const handleSend = async () => {
-        await sendCraftRequest(userName, cart);
-        localStorage.clear();
-        setCart({});
-        setUserName("");
     };
 
     useEffect(() => {
@@ -131,5 +123,3 @@ const App: React.FC = () => {
         </Container>
     );
 };
-
-export default App;
